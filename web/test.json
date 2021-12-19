@@ -1,0 +1,40 @@
+{
+  "elenco": [
+    {
+      "Id": "1",
+      "Titolo": "Film1",
+      "Descrizione": "film prova 1",
+      "Durata": "10",
+      "Autore": "autore film 1",
+      "Proiezione": "2019-05-09 03:33:14",
+      "Image": "https:\/\/votapp.tk\/img\/image-test.jpg"
+    },
+    {
+      "Id": "2",
+      "Titolo": "Film2",
+      "Descrizione": "film prova 2",
+      "Durata": "10",
+      "Autore": "autore film 2",
+      "Proiezione": "2019-05-09 03:33:14",
+      "Image": "https:\/\/votapp.tk\/img\/image-test.jpg"
+    },
+    {
+      "Id": "3",
+      "Titolo": "Film3",
+      "Descrizione": "film prova 3",
+      "Durata": "10",
+      "Autore": "autore film 3",
+      "Proiezione": "2019-05-09 03:33:14",
+      "Image": "https:\/\/votapp.tk\/img\/image-test.jpg"
+    },
+    {
+      "Id": "4",
+      "Titolo": "Film4",
+      "Descrizione": "film prova 4",
+      "Durata": "10",
+      "Autore": "autore film 4",
+      "Proiezione": "2019-05-09 03:33:14",
+      "Image": "https:\/\/votapp.tk\/img\/image-test.jpg"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+node_modules
+vendor
+imagick-3.4.4
+web/assets
+runtime
+tests
