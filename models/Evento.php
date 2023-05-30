@@ -26,7 +26,8 @@ class Evento extends Model
     public function rules()
     {
         return [
-            [['Id', 'Nome', 'Descrizione', 'Inizio', 'Posizione', 'Codice', 'Fine', 'Visibilita', 'Winner', 'Colore'], 'required'],
+            [['Id', 'Nome', 'Descrizione', 'Inizio', 'Posizione', 'Codice', 'Fine', 'Visibilita', 'Colore'], 'required'],
+//            [['Id', 'Nome', 'Descrizione', 'Inizio', 'Posizione', 'Codice', 'Fine', 'Visibilita', 'Winner', 'Colore'], 'required'],
             // [['Id', 'Nome', 'Descrizione','Inizio','Fine'], 'required'],
             ['Codice', 'string', 'length' => 5]
         ];

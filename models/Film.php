@@ -20,8 +20,10 @@ class Film extends Model
     public $Descrizione;
     public $Autore;
     public $Image;
+    public $ImageF;
     public $IsFilm;
     public $IsVisible;
+    public $IsVotabile;
     public $IdEvento;
     public $FileImmagine;
     public $Ordine;

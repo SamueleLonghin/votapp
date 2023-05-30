@@ -72,7 +72,6 @@ class SiteController extends Controller
     }
 
 
-
     /**
      * Login action.
      *
@@ -126,13 +125,6 @@ class SiteController extends Controller
     }
 
 
-
-
-
-
-
-
-
     /**
      * Displays homepage.
      *
@@ -140,7 +132,10 @@ class SiteController extends Controller
      */
     public function actionIndex($Giorno = false)
     {
-
+        if (!$Giorno) {
+            $Giorno = date("Y-m-d");
+            return $this->redirect(['site/index', 'Giorno' => $Giorno]);
+        }
         Yii::$app->view->params['eventi'] = Evento::getNomeInizio();
         return $this->render('index', ['films' => Film::getprossimiFilm('webbew', $Giorno), 'Giorno' => $Giorno,]);
 //        return $this->render('index', ['films' => Film::getFilmGiornataN('webbew', $Giorno), 'Giorno' => $Giorno,]);
@@ -172,6 +167,7 @@ class SiteController extends Controller
         $model = ($Id == -1) ? $model : $model = Evento::getById($Id);
 
         if ($model->load(Yii::$app->request->post()) && $model->validate() && !$model->isAccavallato() && $model->Salva()) {
+            return $this->redirect(['site/gestioneevento', 'Id' => $model->Id]);
         }
         $pie = $this->renderPartial('pie', ['Id' => $model->Id]);
         return $this->render('gestioneEvento', ['model' => $model, 'locations' => Location::getAllforSelect2(), 'pie' => $pie]);
@@ -249,7 +245,7 @@ class SiteController extends Controller
                 $imagine = new \Imagine\Imagick\Imagine();
                 $imagick = $imagine->open($path);
                 $imagick->resize(new \Imagine\Image\Box(640, 480))
-                ->save($path, ['jpeg_quality' => 50]);
+                    ->save($path, ['jpeg_quality' => 50]);
 
                 $model->Image = Url::base('https') . '/' . $path;
             }
@@ -312,13 +308,6 @@ class SiteController extends Controller
     {
         return $this->renderPartial('piefullscreen', []);
     }
-
-
-
-
-
-
-
 
 
     /**
