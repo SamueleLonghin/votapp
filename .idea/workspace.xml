@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0512b4a5-7b14-4428-b5e8-a0445a475931" name="Default Changelist" comment="Aggiunto file .htaccess">
+    <list default="true" id="0512b4a5-7b14-4428-b5e8-a0445a475931" name="Default Changelist" comment="piccoli fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/db.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/db.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/SiteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/SiteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Evento.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Evento.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Film.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Film.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/fr.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -293,7 +292,7 @@
       <workItem from="1589364098021" duration="294000" />
       <workItem from="1589364925967" duration="136000" />
       <workItem from="1685377514803" duration="9664000" />
-      <workItem from="1685452442062" duration="939000" />
+      <workItem from="1685452442062" duration="1946000" />
     </task>
     <task id="LOCAL-00001" summary="Dovrebbe funzionare... tranne immagini">
       <created>1685432852372</created>
@@ -309,7 +308,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685448570743</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="piccoli fix">
+      <created>1685454520411</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1685454520411</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -318,6 +324,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Dovrebbe funzionare... tranne immagini" />
     <MESSAGE value="Aggiunto file .htaccess" />
-    <option name="LAST_COMMIT_MESSAGE" value="Aggiunto file .htaccess" />
+    <MESSAGE value="piccoli fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="piccoli fix" />
   </component>
 </project>

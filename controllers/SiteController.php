@@ -231,7 +231,7 @@ class SiteController extends Controller
         }
         $model = $Id == -1 ? new Film() : Film::getById($Id);
         if ($Id == -1 || !isset($model->Id)) {
-            $model->Image = 'https://votapp.tk/img/VAdsQPEECU4s4nMgrzC9_Q5GzMdhmclD.jpg';
+            $model->Image = '/img/VAdsQPEECU4s4nMgrzC9_Q5GzMdhmclD.jpg';
             $model->Id = -1;
         }
         if ($model->load(Yii::$app->request->post())) {
@@ -247,7 +247,7 @@ class SiteController extends Controller
                 $imagick->resize(new \Imagine\Image\Box(640, 480))
                     ->save($path, ['jpeg_quality' => 50]);
 
-                $model->Image = Url::base('https') . '/' . $path;
+                $model->Image = '/' . $path;
             }
             if ($model->validate() && $model->Salva()) {
                 return $this->redirect(Url::toRoute('eventi'));
