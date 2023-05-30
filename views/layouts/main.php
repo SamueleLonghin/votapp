@@ -30,7 +30,7 @@ AppAsset::register($this);
 
         gtag('config', 'G-26KPP7QX9H');
     </script>
-    <script type="text/javascript" src="https://votapp.tk/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
     <link rel="shortcut icon" href="./favicon.png" type="image/x-icon"/>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -67,7 +67,7 @@ AppAsset::register($this);
             !Yii::$app->user->isGuest || true ? (
             [
                 'label' => 'Estrazione',
-                'linkOptions' => ['onclick' => "window.open('https://votapp.tk/index.php?r=site%2Festrazione','Codice Magico','width=auto,height=auto')"],
+                'linkOptions' => ['onclick' => "window.open('".\yii\helpers\Url::toRoute(['site/estrazione'])."','Codice Magico','width=auto,height=auto')"],
             ]
             ) : (''),
             Yii::$app->user->isGuest ? (
@@ -104,7 +104,8 @@ AppAsset::register($this);
             <div class="" id="Prossimamente">
                 <h4>I nostri prossimi eventi</h4>
                 <?php foreach ($this->params['eventi'] as $evento) { ?>
-                    <a class="btn" href="https://votapp.tk/index.php?Giorno=<?=date("Y-m-d", strtotime($evento['Inizio']))?>">
+                    <a class="btn" href="<?=\yii\helpers\Url::toRoute(['index','Giorno'=>date("Y-m-d", strtotime($evento['Inizio']))])?>">
+<!--                        https://votapp.tk/index.php?Giorno=<?=date("Y-m-d", strtotime($evento['Inizio']))?>-->
                         <h4 class="eventi-successivi4"> <?= $evento['Nome'] ?></h4>
                         <h5 class="eventi-successivi5"><?= date("d / m / Y", strtotime($evento['Inizio'])) ?></h5>
                     </a>

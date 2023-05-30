@@ -2,19 +2,19 @@ version: '3.8'
 
 services:
   mysql:
-    image: mysql:8.0.0
+    image: arm64v8/mysql:8.0
     container_name: mysql_votapp
     environment:
       - MYSQL_ROOT_PASSWORD=secret
       - MYSQL_TCP_PORT=3306
-      # - MYSQL_USER=votapp
-      # - MYSQL_PASSWORD=secret
-      # - MYSQL_DATABASE=votapp
+      - MYSQL_USER=votapp
+      - MYSQL_PASSWORD=secret
+      - MYSQL_DATABASE=votapp
       - MYSQL_ROOT_HOST=%
     command: --init-file /home/db.sql
     volumes:
       - ./database/db.sql:/home/db.sql
-      - ./database/data:/var/lib/mysql
+#      - ./database/data:/var/lib/mysql
     restart: always
 
   php:
@@ -30,6 +30,20 @@ services:
       - MYSQL_DBPASS=secret
       - MYSQL_DBNAME=votapp
     ports:
-      - 8001:80
+      - "8001:80"
     depends_on:
       - mysql
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma_votapp
+    links:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+      PMA_USER: root
+      PMA_PASSWORD: secret
+    restart: always
+    ports:
+      - "8081:80"

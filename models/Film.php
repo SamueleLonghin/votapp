@@ -147,6 +147,7 @@ class Film extends Model
         $films = Yii::$app->db->createCommand("select Id,Titolo,Descrizione, Durata,Autore,COALESCE(Image,' ') as Image,IsFilm,COALESCE(Voti.Voto,'0') as Voto from Film Left JOIN Voti on Film.Id=Voti.IdFilm and Voti.IdMobile = :IdMobile WHERE IdEvento= :IdEvento and IsVisible=1 order by Ordine ")->bindValue('IdMobile', $IdMobile)->bindValue(':IdEvento', $evento['Id'])->queryAll();
         return $films;
     }
+
     public static function getprossimiFilm($IdMobile, $Giorno)
     {
         $evento = Evento::getProssimoEvento($Giorno);

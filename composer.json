@@ -31,7 +31,6 @@
         "philippfrenzel/yii2fullcalendar": "*",
         "pigochu/yii2-jquery-locationpicker": ">=0.2.0",
         "kalyabin/yii2-select-google-map-location": "*",
-        "fxp/composer-asset-plugin": "~1.0",
         "kartik-v/yii2-grid": "@dev",
         "vintage/yii2-tinify": "^2.1",
         "yiisoft/yii2-imagine": "^2.2",
@@ -51,6 +50,9 @@
         "process-timeout": 1800,
         "fxp-asset": {
             "enabled": false
+        },
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true
         }
     },
     "scripts": {
