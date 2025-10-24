@@ -1,25 +1,30 @@
-version: '3.8'
+networks:
+  traefik_proxy:
+    external: true
+  default:
 
 services:
   mysql:
-    image: arm64v8/mysql:8.0
-    container_name: mysql_votapp
+    image: mysql:8.0
+    container_name: votapp-db
     environment:
-      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_ROOT_PASSWORD=6786DA543DFGSdsa
       - MYSQL_TCP_PORT=3306
       - MYSQL_USER=votapp
-      - MYSQL_PASSWORD=secret
+      - MYSQL_PASSWORD=6786DA543DFGSdsa
       - MYSQL_DATABASE=votapp
       - MYSQL_ROOT_HOST=%
     command: --init-file /home/db.sql
     volumes:
       - ./database/db.sql:/home/db.sql
-#      - ./database/data:/var/lib/mysql
-    restart: always
+    restart: unless-stopped
+    networks:
+      - default
 
   php:
-    image: yiisoftware/yii2-php:7.3-apache
-    container_name: yii_web_votapp
+    build:
+       dockerfile: Dockerfile
+    container_name: votapp-app
     volumes:
       - ~/.composer-docker/cache:/root/.composer/cache:delegated
       - ./:/app:delegated
@@ -27,15 +32,24 @@ services:
       - MYSQL_DBHOST=mysql
       - MYSQL_DBPORT=3306
       - MYSQL_DBUSER=votapp
-      - MYSQL_DBPASS=secret
+      - MYSQL_DBPASS=6786DA543DFGSdsa
       - MYSQL_DBNAME=votapp
-    ports:
-      - "8001:80"
     depends_on:
       - mysql
+    networks:
+      - traefik_proxy
+      - default
+    labels:
+    - "traefik.enable=true"
+    - "traefik.docker.network=traefik_proxy"
+    - "traefik.http.routers.votapp-router.rule=Host(`votapp.samuelelonghin.it`)"
+    - "traefik.http.routers.votapp-router.entrypoints=websecure"
+    - "traefik.http.routers.votapp-router.tls.certresolver=le"
+    - "traefik.http.services.votapp.loadbalancer.server.port=80"
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: pma_votapp
+    container_name: votapp-pma
     links:
       - mysql
     environment:
@@ -43,7 +57,16 @@ services:
       PMA_PORT: 3306
       PMA_ARBITRARY: 1
       PMA_USER: root
-      PMA_PASSWORD: secret
-    restart: always
-    ports:
-      - "8081:80"
+      PMA_PASSWORD: 6786DA543DFGSdsa
+    restart: unless-stopped
+    
+    networks:
+      - traefik_proxy
+      - default
+    labels:
+    - "traefik.enable=true"
+    - "traefik.docker.network=traefik_proxy"
+    - "traefik.http.routers.admin-votapp-router.rule=Host(`admin.votapp.samuelelonghin.it`)"
+    - "traefik.http.routers.admin-votapp-router.entrypoints=websecure"
+    - "traefik.http.routers.admin-votapp-router.tls.certresolver=le"
+    - "traefik.http.services.admin-votapp.loadbalancer.server.port=80"
